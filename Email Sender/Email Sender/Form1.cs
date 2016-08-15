@@ -21,14 +21,30 @@ namespace Email_Sender
 
         private void buttonSend_Click(object sender, EventArgs e)
         {
-            MailMessage message = new MailMessage();
-            message.From = new MailAddress(textBoxEmail.Text);
-            message.Subject = textBoxSubject.Text;
-            message.Body = textBoxBody.Text;
-            foreach (string s in textBoxName.Text.Split(';'))
+            try
             {
-                message.To.Add(s);
+                MailMessage message = new MailMessage();
+                message.From = new MailAddress(textBoxEmail.Text);
+                message.Subject = textBoxSubject.Text;
+                message.Body = textBoxBody.Text;
+                foreach (string s in textBoxName.Text.Split(';'))
+                    message.To.Add(s);
+
+                SmtpClient client = new SmtpClient();
+                client.Credentials = new NetworkCredential(textBoxEmail.Text,
+                    textBoxPassword.Text);
+                client.Host = "mail1.active-e.biz";
+                client.Port = 587;
+                client.EnableSsl = false;
+                client.Send(message);
             }
+            catch
+            {
+                MessageBox.Show("There was an error sending message", "Error", 
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+
         }
     }
 }
