@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Net.Mail;
+using System.Net;
 
 namespace Email_Sender
 {
@@ -17,19 +19,16 @@ namespace Email_Sender
             InitializeComponent();
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void buttonSend_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void Credentials_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void toolTip1_Popup(object sender, PopupEventArgs e)
-        {
-
+            MailMessage message = new MailMessage();
+            message.From = new MailAddress(textBoxEmail.Text);
+            message.Subject = textBoxSubject.Text;
+            message.Body = textBoxBody.Text;
+            foreach (string s in textBoxName.Text.Split(';'))
+            {
+                message.To.Add(s);
+            }
         }
     }
 }

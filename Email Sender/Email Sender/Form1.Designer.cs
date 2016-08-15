@@ -70,7 +70,6 @@
             this.label1.Size = new System.Drawing.Size(74, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "Recipients";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -141,6 +140,7 @@
             this.buttonSend.TabIndex = 10;
             this.buttonSend.Text = "Send Email";
             this.buttonSend.UseVisualStyleBackColor = true;
+            this.buttonSend.Click += new System.EventHandler(this.buttonSend_Click);
             // 
             // Credentials
             // 
@@ -154,11 +154,9 @@
             this.Credentials.TabIndex = 11;
             this.Credentials.TabStop = false;
             this.Credentials.Text = "Credentials";
-            this.Credentials.Enter += new System.EventHandler(this.Credentials_Enter);
             // 
             // toolTip1
             // 
-            this.toolTip1.Popup += new System.Windows.Forms.PopupEventHandler(this.toolTip1_Popup);
             // 
             // Form1
             // 
