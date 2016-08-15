@@ -23,6 +23,11 @@ namespace Email_Sender
         {
             try
             {
+                if (!textBoxEmail.Text.Contains("@"))
+                {
+                    MessageBox.Show("You need to provide a valid email in the credentials");
+                    return;
+                }
                 MailMessage message = new MailMessage();
                 message.From = new MailAddress(textBoxEmail.Text);
                 message.Subject = textBoxSubject.Text;
