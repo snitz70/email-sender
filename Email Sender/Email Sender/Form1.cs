@@ -28,6 +28,7 @@ namespace Email_Sender
                     MessageBox.Show("You need to provide a valid email in the credentials");
                     return;
                 }
+                buttonSend.Enabled = false;
                 MailMessage message = new MailMessage();
                 message.From = new MailAddress(textBoxEmail.Text);
                 message.Subject = textBoxSubject.Text;
@@ -42,6 +43,7 @@ namespace Email_Sender
                 client.Port = 587;
                 client.EnableSsl = false;
                 client.Send(message);
+
             }
             catch
             {
@@ -49,6 +51,7 @@ namespace Email_Sender
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
             }
+            finally { buttonSend.Enabled = true; }
 
         }
     }
